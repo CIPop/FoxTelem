@@ -109,7 +109,7 @@ public class FmDemodulator {
 	/**
 	 * We pass in the current values for i and q
 	 * 
-	 *  * To measure the change in frequency, we want d-theta/dt and we don’t want to use arctan because its hard to do at speed.
+	 *  * To measure the change in frequency, we want d-theta/dt and we don't want to use arctan because its hard to do at speed.
 	 *
 	 * r(t) = q(t)/i(t)
 	 *

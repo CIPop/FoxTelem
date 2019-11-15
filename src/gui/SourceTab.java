@@ -1725,8 +1725,8 @@ public class SourceTab extends JPanel implements Runnable, ItemListener, ActionL
 //					} else 
 					if (position-soundcardSources.length == 0) { // rtlsdr // this is probablly not all the devices!
 						vendorId = (short)0x0BDA;
-						deviceId = (short)0x2838;
-					} 
+						deviceId = (short)0x2832; // TODO: Implement vendorId/deviceId config file. (Was 2838)
+					}
 					if (rfDevice == null) { // this is a hack, you need to exit FoxTelem to switch devices if you have two plugged in.  Otherwise it just opens the previous one. FIXME
 						try {
 							rfDevice = tunerManager.findDevice(vendorId, deviceId);

@@ -1,0 +1,41 @@
+<project>
+
+    <property name="lib.dir" value="lib"/>
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="classpath"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/FoxTelem.jar" basedir="build/classes">
+            <zipgroupfileset dir="lib" includes="**/*.jar"/>
+             <fileset dir="src">
+                <include name="images/*.png" />
+                <include name="images/*.jpg" />
+            </fileset>
+            <manifest>
+                <attribute name="Main-Class" value="FoxTelemMain"/>
+                <attribute name="Class-Path" value="." />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/FoxTelemMain.jar" fork="true"/>
+        <classpath>
+                <path refid="classpath"/>
+                <path location="${jar.dir}/${ant.project.name}.jar"/>
+        </classpath>
+    </target>
+
+</project>
+
